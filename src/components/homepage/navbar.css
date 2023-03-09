@@ -1,0 +1,14 @@
+.word{
+    font-size: xx-large;
+    font-weight: 800;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold';
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+.content-home{
+    display: flex;
+    justify-content: flex-end;
+    color: hsl(236, 17%, 53%);
+}

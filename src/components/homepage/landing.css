@@ -1,0 +1,27 @@
+.landing{
+    width: 55%;
+}
+.image{
+    height: 11rem;
+    background-color: red;
+    width: 100%;
+    background-image: url("../../news-homepage-main/assets/images/image-web-3-desktop.jpg");
+}
+.texts{
+    height: max-content;
+}
+.future{
+    font-size:xx-large;
+    font-weight: 800;
+    margin-right: 1.5rem;
+}
+.readmore{
+    font-size: 15px;
+    color: hsl(233, 10%, 60%);
+}
+.btn{
+    background-color: hsl(5, 85%, 63%);
+    border: 0;
+    border-radius: 0;
+    width: 10rem;
+}

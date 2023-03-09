@@ -1,0 +1,44 @@
+.last-cards{
+    gap: 3rem;
+}
+.first-card img{
+    width: 80px;
+    height: 100px;
+}
+.first-card{
+    display: flex;
+    gap: 1rem;
+}
+.second-card{
+    display: flex;
+    gap: 1rem;
+}
+.third-card{
+    display: flex;
+    gap: 1rem;
+}
+.second-card img{
+    width: 80px;
+    height: 100px;
+}
+.third-card img{
+    width: 80px;
+    height: 100px;
+}
+.num{
+    display: flex;
+    flex-direction: column;
+}
+.head{
+    font-size: 15px;
+    font-weight: 800;
+}
+.digits{
+    font-size: larger;
+    font-weight: 500;
+}
+.description{
+    font-size: 14px;
+    margin-top: 0;
+    padding-top: 0;
+}

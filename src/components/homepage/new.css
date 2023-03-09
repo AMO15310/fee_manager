@@ -1,0 +1,23 @@
+.new-jumbotron{
+    height: min-content;
+    width: 18rem;
+    background-color:hsl(240, 100%, 5%);
+}
+.header{
+    color: hsl(35, 77%, 62%);
+    font-weight: 600;
+}
+.first-text{
+    color: white;
+    font-weight: 700;
+}
+.first-paragraph{
+    color: white;
+}
+.horizontal-line{
+    color: white;
+    font-weight: 900;
+    border-top: 3px solid white;
+    width: 90%;
+    margin-left: 1rem;
+}
