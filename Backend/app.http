@@ -1,9 +1,0 @@
-POST http://localhost:3380/signup
-Content-Type: "application/json"
-
-{
-    "fullName":"Ian Nyaga",
-    "userName":"ianoh",
-    "email":"ian@gmail.com",
-    "password":"ian12345"
-}
