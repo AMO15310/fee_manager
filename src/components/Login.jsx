@@ -1,10 +1,11 @@
 import React from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 class Login extends React.Component {
   state = {
-    loading: true,
-    error: null,
+    email: "",
+    password: "",
   };
 
   componentDidMount() {
@@ -12,6 +13,35 @@ class Login extends React.Component {
   }
 
   init = () => {};
+  handleUser = (val) => {
+    this.setState({
+      email: val.target.value,
+    });
+  };
+  handlePass = (val) => {
+    this.setState({
+      password: val.target.value,
+    });
+  };
+  sendData = (e) => {
+    e.preventDefault();
+    const User = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    if (!User.password || !User.email) {
+      console.log("Please fill all details");
+      return;
+    }
+    axios
+      .post("http://localhost:4420/login", User)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
 
   render() {
     return (
@@ -21,18 +51,19 @@ class Login extends React.Component {
             <div className="text-muted lead  text-center font-weight-bold">
               Login
             </div>
-            <form action="">
+            <form action="" onSubmit={(e) => this.sendData(e)}>
               <div className="form-floating my-3">
                 <input
-                  type="text"
+                  type="email"
                   id="username"
                   name="username"
                   className="form-control "
-                  placeholder="Enter username"
+                  placeholder="Enter email"
+                  onChange={(val) => this.handleUser(val)}
                   required
                 />
                 <label htmlFor="username" className="form-label">
-                  Username
+                  Email
                 </label>
               </div>
               <div className="form-floating my-3">
@@ -41,6 +72,7 @@ class Login extends React.Component {
                   id="pwd"
                   className="form-control "
                   placeholder="Enter Password"
+                  onChange={(val) => this.handlePass(val)}
                   name="pwd"
                   required
                 />
@@ -48,7 +80,11 @@ class Login extends React.Component {
                   Password
                 </label>
               </div>
-              <button className="btn btn-outline-primary  mb-2 mt-2">
+              <button
+                className="btn btn-outline-primary  mb-2 mt-2"
+                type="submit"
+                onClick={(e) => this.sendData(e)}
+              >
                 Submit
               </button>
               <div className="text-muted ">

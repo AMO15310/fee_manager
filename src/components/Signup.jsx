@@ -2,6 +2,7 @@ import React from "react";
 import "./signup.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Alert } from "bootstrap";
 
 class SignupPage extends React.Component {
   constructor() {
@@ -13,6 +14,7 @@ class SignupPage extends React.Component {
     email: "",
     password1: "",
     password2: "",
+    showAlert: false,
   };
 
   changeFull = (event) => {
@@ -44,6 +46,12 @@ class SignupPage extends React.Component {
     });
   };
 
+  toggleAlert = () => {
+    this.setState({
+      showAlert: !this.state.showAlert,
+    });
+  };
+
   componentDidMount() {
     this.init();
   }
@@ -66,14 +74,14 @@ class SignupPage extends React.Component {
       email: this.state.email,
       password: this.state.password1,
     };
-    const url = "http://localhost:4220/signup";
+    const url = "http://localhost:4420/signup";
     axios
       .post(url, data)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.message);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.request.response);
       });
   };
 
@@ -82,6 +90,15 @@ class SignupPage extends React.Component {
       <div className="signup">
         <div className="container  d-flex  w-50   bg-success">
           <div className="form-control ">
+            <div className="d-flex justify-content-center  my-4 ">
+              {this.state.showAlert && (
+                <div class="alert alert-success">
+                  <strong>Success!</strong> Indicates a successful or positive
+                  action.
+                </div>
+              )}
+            </div>
+
             <div className="text-muted lead  text-center font-weight-bold">
               Signup
             </div>
@@ -94,7 +111,7 @@ class SignupPage extends React.Component {
                 placeholder="Full Name"
                 name="full"
                 className="form-control mt-3"
-                required
+                // required
               />
               <input
                 type="text"
@@ -102,7 +119,7 @@ class SignupPage extends React.Component {
                 onChange={this.changeUser}
                 placeholder="UserName"
                 className="form-control mt-3"
-                required
+                // required
               />
               <input
                 type="text"
@@ -110,7 +127,7 @@ class SignupPage extends React.Component {
                 onChange={this.changeEmail}
                 placeholder="Email"
                 className="form-control mt-3"
-                required
+                // required
               />
               <input
                 type="password"
@@ -118,7 +135,7 @@ class SignupPage extends React.Component {
                 onChange={this.changePass1}
                 placeholder="Password"
                 className="form-control mt-3"
-                required
+                // required
               />
               <input
                 type="password"
@@ -126,7 +143,7 @@ class SignupPage extends React.Component {
                 onChange={this.changePass2}
                 placeholder="Confirm Password"
                 className="form-control  mt-3 mb-3 "
-                required
+                // required
               />
               {/* <div className="valid-feedback">Valid.</div>
               <div className="invalid-feedback">
