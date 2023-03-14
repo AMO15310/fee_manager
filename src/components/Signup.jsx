@@ -14,7 +14,10 @@ class SignupPage extends React.Component {
     email: "",
     password1: "",
     password2: "",
-    showAlert: false,
+    showAlert1: false,
+    succMess: "",
+    className: "",
+    mainMess: "",
   };
 
   changeFull = (event) => {
@@ -46,11 +49,11 @@ class SignupPage extends React.Component {
     });
   };
 
-  toggleAlert = () => {
-    this.setState({
-      showAlert: !this.state.showAlert,
-    });
-  };
+  // toggleAlert = () => {
+  //   this.setState({
+  //     showAlert1: !this.state.showAlert,
+  //   });
+  // };
 
   componentDidMount() {
     this.init();
@@ -79,9 +82,40 @@ class SignupPage extends React.Component {
       .post(url, data)
       .then((response) => {
         console.log(response.data.message);
+        // this.setState({
+        //   succMess: response.data.message,
+        // });
+        this.setState({
+          className: "alert alert-success",
+          succMess: response.data.message,
+          showAlert1: true,
+          mainMess: "Success",
+        });
+        setTimeout(() => {
+          this.setState({
+            showAlert1: false,
+          });
+        }, 4000);
       })
       .catch((error) => {
         console.log(error.request.response);
+        // this.setState({
+        //   className:"alert alert-danger"
+        // })
+        this.setState({
+          showAlert1: true,
+          className: "alert alert-danger",
+          succMess: error.request.response,
+          // mainMess: "Error",
+        });
+        setTimeout(() => {
+          this.setState({
+            showAlert1: false,
+            className: "",
+            succMess: "",
+            mainMess: "",
+          });
+        }, 4000);
       });
   };
 
@@ -91,10 +125,9 @@ class SignupPage extends React.Component {
         <div className="container  d-flex  w-50   bg-success">
           <div className="form-control ">
             <div className="d-flex justify-content-center  my-4 ">
-              {this.state.showAlert && (
-                <div class="alert alert-success">
-                  <strong>Success!</strong> Indicates a successful or positive
-                  action.
+              {this.state.showAlert1 && (
+                <div className={this.state.className}>
+                  <strong>{this.state.mainMess}</strong> {this.state.succMess}
                 </div>
               )}
             </div>

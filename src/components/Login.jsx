@@ -6,6 +6,9 @@ class Login extends React.Component {
   state = {
     email: "",
     password: "",
+    showAlert2: false,
+    className: "",
+    mainMess: "",
   };
 
   componentDidMount() {
@@ -48,6 +51,13 @@ class Login extends React.Component {
       <div className=" content ">
         <div className="container  mt-5 w-50  d-flex align-items-center h-30 bg-primary ">
           <div className="form-control ">
+            <div className="d-flex justify-content-center  my-4 ">
+              {this.state.showAlert2 && (
+                <div className={this.state.className}>
+                  <strong>{this.state.mainMess}</strong> {this.state.succMess}
+                </div>
+              )}
+            </div>
             <div className="text-muted lead  text-center font-weight-bold">
               Login
             </div>
